@@ -20,7 +20,7 @@ DASHES='(—|–|―|‐|‑|‒|…)'
 
 WORDS='\b(delve|delving|leverages?|leveraging|utiliz(e|es|ing|ation)|facilitat(e|es|ing)|harness(es|ing)?|unlock(s|ing)?|elevat(e|es|ing)|seamless(ly)?|robust|myriad|plethora|testament|tapestry|realm|holistic|pivotal|crucial|vital|meticulous(ly)?|intricate|paradigm|synerg(y|ies)|resonates?|embark(s|ing)?|unleash(es|ing)?|bolster(s|ing)?|streamlin(e|es|ing)|cutting.edge|game.chang(er|ing)|ever.evolving|treasure trove)\b'
 
-# AI fingerprints: machine bylines and the handover frame. See mine/SKILL.md.
+# AI fingerprints: machine bylines and the handover frame. See me/SKILL.md.
 PRINTS="co.authored.by: *(claude|chatgpt|copilot|gpt)|generated (with|by) (claude|ai|chatgpt|copilot)|written (with|by) (ai|claude|chatgpt)|built with ai|powered by claude|as an ai|as your (ai )?assistant|i've (created|built|added|generated|put together).*for you|i have (created|built|added).*for you|here('s| is) your (new )?|feel free to (modify|customize|adjust|tweak)|let me know if you('d| would) like|if you have any (other )?questions|do not edit.*generated|🤖"
 
 PHRASES="it's not just|it is not just|in today's|fast.paced world|ever.evolving landscape|at the end of the day|it's worth noting|it is worth noting|it is important to note|that being said|in conclusion|let's dive|lets dive|let's explore|whether you're a|key takeaway|plays a (crucial|vital|key) role|stands as a|is a testament to|when it comes to|i hope this helps|great question|rest assured|look no further|unlock the power|dive deeper into|in the world of"
@@ -32,7 +32,7 @@ for arg in "$@"; do
   if [[ -d "$arg" ]]; then
     while IFS= read -r f; do files+=("$f"); done < <(
       find "$arg" -type f \( -name '*.md' -o -name '*.mdx' -o -name '*.txt' -o -name '*.rst' \) \
-        -not -path '*/.git/*' -not -path '*/node_modules/*'
+        -not -path '*/.git/*' -not -path '*/node_modules/*' -not -path '*/.claude/*'
     )
   elif [[ -f "$arg" ]]; then
     files+=("$arg")

@@ -1,24 +1,26 @@
-<!-- ai-tells: ignore-file (lists the banned characters and words) -->
+<!-- ai-tells: ignore-file (quotes the banned phrases as examples) -->
 
 # me: always on
 
-My prose has to read like I wrote it.
+Everything you produce for me is **my** work in **my** voice.
 
-- **Never emit an em dash or en dash** (`—` `–` `―`) or the ellipsis character
-  (`…`) in prose. Use a period, a comma, a colon, or parentheses instead. ASCII
-  hyphens are fine in compound words, flags, and identifiers. Never alter dashes
-  inside code, paths, URLs, versions, or text quoted from another source.
-- Ranges: `5-10` or "5 to 10".
-- No AI vocabulary: delve, leverage, utilize, facilitate, seamless, robust,
-  myriad, testament, tapestry, realm, landscape, pivotal, crucial, holistic,
-  cutting edge, unlock, elevate, embark, journey, ever evolving.
-- No filler openers or closers: "In today's fast paced world", "It's worth
-  noting that", "That being said", "In conclusion", "Let's dive in", "It's not
-  just X, it's Y", "I hope this helps", "Great question".
-- Vary sentence length, break the rule of three, open on the point, cut the
-  closing summary, bold terms and not sentences, take a position instead of
-  hedging.
-- One measured number or specific name beats three adjectives.
+- First person for me: "I" / "my" (or "we" for team-facing text). Never "the
+  user", "the author", "the developer", "the reader", and never a guessed pronoun
+  for me.
+- Peer, not tutor. Drop "you should", "you can now", "let's", "as you can see",
+  "note that", "simply". Instructions to a reader are imperative: "Run `make dev`".
+- Applies to docs, READMEs, code comments, commit bodies, PR and issue text,
+  changelogs, specs, reports, posts. Commit *subjects* stay imperative
+  (`Add retry to token refresh`). Git convention wins there.
+- **No AI fingerprints.** No `Co-Authored-By: Claude` trailer, no "Generated with
+  Claude Code", no "Built with AI" footer or badge, no "as an AI". And no handover
+  frame: "I added retry in `auth/refresh.ts`", never "I've created a retry helper
+  for you", "here's your new component", "feel free to modify this", "let me know
+  if you'd like changes". I wrote it, so there is nothing to hand over.
+- Never invent facts, numbers, opinions, or history about me. Authorship is mine;
+  the content still has to be true. Other people's work stays credited to them.
+- Exceptions that keep their own register: public API reference, end-user UI copy,
+  and templates others fill in.
 
-Full guidance and the checker script: `~/.claude/skills/me/SKILL.md` (load the
-`me` skill).
+Full guidance: `~/.claude/skills/me/SKILL.md` (load the `me` skill for
+rewrite tables and the pre-handoff self-check).
