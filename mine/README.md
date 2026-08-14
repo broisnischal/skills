@@ -1,17 +1,26 @@
+<!-- ai-tells: ignore-file (quotes the banned phrases as examples) -->
+
 # mine
 
 A Claude skill that makes the AI write as **me**, not at me.
 
-Default AI output has two habits I don't want in my own repo: it teaches me
-("you should validate the payload…") and it talks about me in the third person
-("the user can configure…"). Both are wrong — I researched the thing, I built
-it, I tested it. This skill flips every artifact into my first-person voice:
-docs, READMEs, code comments, commit bodies, PRs, issues, changelogs, specs,
-reports.
+Default AI output has three habits I don't want in my own repo. It teaches me
+("you should validate the payload..."). It talks about me in the third person
+("the user can configure..."). And it signs its own name to my work, either
+literally (`Co-Authored-By: Claude`, "Generated with Claude Code") or through the
+handover frame where my own file gets presented back to me as a gift ("here's
+your new component, feel free to modify it").
+
+All three are wrong. I researched the thing, I built it, I tested it. This skill
+flips every artifact into my first-person voice: docs, READMEs, code comments,
+commit bodies, PRs, issues, changelogs, specs, reports.
 
 ```diff
 - You should validate the payload before saving.
 + I validate the payload before saving.
+
+- I've created a retry helper for you. Feel free to modify it.
++ I added a retry helper in auth/refresh.ts.
 
 - This tutorial shows you how to set up the worker.
 + Here's how I set up the worker.
@@ -23,7 +32,7 @@ reports.
 ## Install
 
 This skill lives in my [skills](https://github.com/broisnischal/skills)
-collection. Clone it anywhere, then run the installer — it symlinks the skill
+collection. Clone it anywhere, then run the installer. It symlinks the skill
 into place and wires the always-on import below:
 
 ```bash
@@ -32,7 +41,7 @@ bash ~/src/claude-skills/mine/install.sh            # personal: ~/.claude
 bash ~/src/claude-skills/mine/install.sh --project  # or just this repo
 ```
 
-It's idempotent — re-running it won't duplicate anything. By hand instead:
+It's idempotent, re-running it won't duplicate anything. By hand instead:
 
 ```bash
 ln -s ~/src/claude-skills/mine ~/.claude/skills/mine   # or .claude/skills/mine
@@ -44,7 +53,7 @@ comments, commits, PRs) or invoke it explicitly with `/mine`.
 ## Always on
 
 Skills load on demand. To keep the voice rule in context for **every** turn,
-import `ALWAYS.md` from your top-level memory file — `~/.claude/CLAUDE.md` for
+import `ALWAYS.md` from your top-level memory file: `~/.claude/CLAUDE.md` for
 all projects, or `./CLAUDE.md` for one repo:
 
 ```md
@@ -65,7 +74,7 @@ all projects, or `./CLAUDE.md` for one repo:
 ## Where it deliberately stops
 
 - **Commit subjects stay imperative.** `Add retry to token refresh`, not `I add
-  retry…` — tooling and every git convention expect that mood. The body is where
+  retry...`. Tooling and every git convention expect that mood. The body is where
   the first person goes.
 - **It won't invent me.** Writing in my voice means authorship, not fabrication:
   no made-up benchmarks, history, credentials, or opinions I never expressed, and
@@ -78,9 +87,9 @@ all projects, or `./CLAUDE.md` for one repo:
 
 Fork it and edit two things:
 
-1. **`we` instead of `I`** — if your writing goes out under a team name, swap the
+1. **`we` instead of `I`**: if your writing goes out under a team name, swap the
    pronoun in `SKILL.md` and `ALWAYS.md`.
-2. **Your own tells** — add the phrases you personally never write to the
+2. **Your own tells**: add the phrases you personally never write to the
    self-check regex at the bottom of `SKILL.md`.
 
 MIT.
